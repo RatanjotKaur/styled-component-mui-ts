@@ -26,9 +26,9 @@ const CascadeDropdownDemo: React.FC = () => {
   return (
     <div>
       <CascadeDropdown options={options.countries} onChange={handleCountryChange} />
-      {selectedCountry && (
+      {/* {selectedCountry && (
         <CascadeDropdown options={options.states[selectedCountry]} onChange={handleStateChange} />
-      )}
+      )} */}
 
       <p>
         Selected Country: {selectedCountry}
