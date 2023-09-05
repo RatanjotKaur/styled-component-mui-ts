@@ -16,7 +16,7 @@ import {
 import {KeyboardArrowLeft, Star, StarHalf, KeyboardArrowDown} from '@mui/icons-material';
 import {departmentList, productDetails} from "./PageInfo"
 
-const Menubar:React.FC = () => {
+const PageBody:React.FC = () => {
     return (
         <Container>
             <LeftContainer>
@@ -78,4 +78,4 @@ const Menubar:React.FC = () => {
     )
 }
 
-export default Menubar
+export default PageBody
