@@ -3,12 +3,12 @@ import GlobalStyle from "./styles/global"
 // import Navbar from "./components/Navbar"
 // import Menubar from "./components/Menubar"
 // import PageBody from "./components/PageBody"
-import CascadeDropdownDemo from './components/CascadeDropdown/countryCascadeDropdown';
+import CascadeDropdown from './components/CascadeDropdown';
 
 const App:React.FC = ()=> (
   <> 
     <GlobalStyle/>
-    <CascadeDropdownDemo/>
+    <CascadeDropdown/>
   </>
 )
 

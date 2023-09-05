@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const DropdownWrapper = styled.div`
-  display: inline-block;
-  margin-right: 20px;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 300px;
+  margin: 0 auto;
 `;
