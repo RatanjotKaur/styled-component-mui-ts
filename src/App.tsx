@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GlobalStyle from "./styles/global"
-// import Navbar from "./components/Navbar"
-// import Menubar from "./components/Menubar"
-// import PageBody from "./components/PageBody"
-import CascadeDropdown from './components/CascadeDropdown';
+import CountryDropdown from './components/CascadeDropdown/index';
 
-const App:React.FC = ()=> (
-  <> 
-    <GlobalStyle/>
-    <CascadeDropdown/>
-  </>
-)
+function App() {
+  const [selectedCountry, setSelectedCountry] = useState<string>('');
+
+  const handleCountryChange = (country: string) => {
+    setSelectedCountry(country);
+  };
+
+  return (
+    <div className="App">
+      <h1>Cascade Dropdown Example</h1>
+      <CountryDropdown selectedCountry={selectedCountry} onCountryChange={handleCountryChange} />
+    </div>
+  );
+}
 
 export default App;
+
