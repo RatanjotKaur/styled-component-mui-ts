@@ -1,15 +1,15 @@
 import React from 'react';
 import GlobalStyle from "./styles/global"
-// import Navbar from "./components/Navbar"
-// import Menubar from "./components/Menubar"
-// import PageBody from "./components/PageBody"
-import CascadeDropdown from './components/CascadeDropdown';
+import CountryDropdown from './components/CascadeDropdown/index';
 
-const App:React.FC = ()=> (
-  <> 
-    <GlobalStyle/>
-    <CascadeDropdown/>
-  </>
-)
+function App() {
+  return (
+    <div className="App">
+      <h1>Cascade Dropdown Example</h1>
+      <CountryDropdown />
+    </div>
+  );
+}
 
 export default App;
+
