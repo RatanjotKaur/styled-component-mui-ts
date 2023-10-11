@@ -1,77 +1,26 @@
-import React, { useState } from 'react';
-import { FormControl, InputLabel, Select, MenuItem, Typography, SelectChangeEvent } from '@mui/material';
-import { Container } from './styles';
+// CountryDropdown.tsx
+import React from 'react';
+import { useCountry } from './CountryContext';
+import StateDropdown from './StateDropdown';
 
-interface Option {
-  label: string;
-  value: string;
-}
+const countries = ['Select Country', 'USA', 'Canada'];
 
-const countries: Option[] = [
-  { label: 'Select Country', value: '' },
-  { label: 'USA', value: 'usa' },
-  { label: 'Canada', value: 'canada' },
-];
-
-const cities: { [key: string]: Option[] } = {
-  usa: [
-    { label: 'Select City', value: '' },
-    { label: 'New York', value: 'new-york' },
-    { label: 'Los Angeles', value: 'los-angeles' },
-  ],
-  canada: [
-    { label: 'Select City', value: '' },
-    { label: 'Toronto', value: 'toronto' },
-    { label: 'Vancouver', value: 'vancouver' },
-  ],
-}; 
-
-const CascadeDropdown: React.FC = () => {
-  const [selectedCountry, setSelectedCountry] = useState<string>('');
-  const [selectedCity, setSelectedCity] = useState<string>('');
-
-  const handleCountryChange = (event: SelectChangeEvent<string>) => {
-    setSelectedCountry(event.target.value as string);
-    setSelectedCity('');
-  };
-
-  const handleCityChange = (event: SelectChangeEvent<string>) => {
-    setSelectedCity(event.target.value as string);
-  };
+function CountryDropdown() {
+  const { selectedCountry, setSelectedCountry } = useCountry();
 
   return (
-    <Container>
-      <FormControl>
-        <InputLabel>Country</InputLabel>
-        <Select value={selectedCountry} onChange={handleCountryChange}>
-          {countries.map((country) => (
-            <MenuItem key={country.value} value={country.value}>
-              {country.label}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {selectedCountry && (
-        <FormControl>
-          <InputLabel>City</InputLabel>
-          <Select value={selectedCity} onChange={handleCityChange}>
-            {cities[selectedCountry].map((city) => (
-              <MenuItem key={city.value} value={city.value}>
-                {city.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      )}
-
-      {selectedCity && (
-        <Typography variant="body1">
-          You selected: {selectedCity} in {selectedCountry}
-        </Typography>
-      )}
-    </Container>
+    <div>
+      <label>Country</label>
+      <select value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
+        {countries.map((country) => (
+          <option key={country} value={country}>
+            {country}
+          </option>
+        ))}
+      </select>
+      {selectedCountry && <StateDropdown />}
+    </div>
   );
-};
+}
 
-export default CascadeDropdown;
+export default CountryDropdown;
