@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, InputLabel, Select, MenuItem, Typography } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, Typography, SelectChangeEvent } from '@mui/material';
 import { Container } from './styles';
 
 interface Option {
@@ -24,18 +24,18 @@ const cities: { [key: string]: Option[] } = {
     { label: 'Toronto', value: 'toronto' },
     { label: 'Vancouver', value: 'vancouver' },
   ],
-};
+}; 
 
 const CascadeDropdown: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState<string>('');
   const [selectedCity, setSelectedCity] = useState<string>('');
 
-  const handleCountryChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleCountryChange = (event: SelectChangeEvent<string>) => {
     setSelectedCountry(event.target.value as string);
     setSelectedCity('');
   };
 
-  const handleCityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleCityChange = (event: SelectChangeEvent<string>) => {
     setSelectedCity(event.target.value as string);
   };
 
